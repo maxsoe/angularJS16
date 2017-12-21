@@ -22,7 +22,10 @@
   <p>Search by value:</p>
   <input ng-model="vm.search">
   <ul>
-    <li ng-repeat="fruit in vm.fruits | filter: vm.search">{{fruit | makePlural}}</li>
+    <li ng-repeat="post in vm.posts | filter: vm.search">
+      title: {{post.title}} <br>
+      body: {{post.body}}
+    </li>
   </ul>
   <button class="btn btn-primary" ng-click="vm.alertMe()" name="button">Alert me</button>
 
