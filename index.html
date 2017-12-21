@@ -18,6 +18,12 @@
 
   <input type="text" ng-model="vm.hello">
 
+  <h3>List of fruits</h3>
+  <ul>
+    <li ng-repeat="fruit in vm.fruits">{{fruit}}</li>
+  </ul>
+  <button class="btn btn-primary" ng-click="vm.alertMe()" name="button">Alert me</button>
+
 
   <!-- Jquery for Bootstrap -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -27,5 +33,7 @@
   <script src="app.js" charset="utf-8"></script>
 
 </body>
+
+
 
 </html>
