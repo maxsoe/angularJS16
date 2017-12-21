@@ -7,6 +7,7 @@ app.controller('mainCtrl', function(mainSvc) {
   this.alertMe = function() {
     alert('Button pressed');
   };
+
   mainSvc.getPosts()
     .then(function(response) {
       vm.posts = response.data;
@@ -19,8 +20,19 @@ app.filter('makePlural', function() {
   };
 });
 
-app.service('mainSvc', function($http) {
-  this.getPosts = function() {
+// using factory
+app.factory('mainSvc', function($http) {
+  var getPosts = function() {
     return $http.get('https://jsonplaceholder.typicode.com/posts');
-  }
-})
+  };
+  return {
+    getPosts: getPosts
+  };
+});
+
+// using service
+// app.service('mainSvc', function($http) {
+//   this.getPosts = function() {
+//     return $http.get('https://jsonplaceholder.typicode.com/posts');
+//   };
+// });
