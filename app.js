@@ -3,15 +3,30 @@ var app = angular.module('firstAngularApp', ['ui.router']);
 app.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/');
 
-  $stateProvider
-    .state('home', {
-      url: '/',
-      templateUrl: 'home.html'
-    })
-    .state('posts', {
-      url: '/posts',
-      template: '<posts-list></posts-list>'
-    });
+  var homeState = {
+    name: 'home',
+    url: '/',
+    templateUrl: 'home.html'
+  };
+
+  var postsState = {
+    name: 'posts',
+    url: '/posts',
+    template: '<posts-list></posts-list>'
+  };
+
+  $stateProvider.state(homeState);
+  $stateProvider.state(postsState);
+
+  // $stateProvider
+  //   .state('home', {
+  //     url: '/',
+  //     templateUrl: 'home.html'
+  //   })
+  //   .state('posts', {
+  //     url: '/posts',
+  //     template: '<posts-list></posts-list>'
+  //   });
 });
 
 app.controller('mainCtrl', function() {
