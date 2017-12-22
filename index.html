@@ -19,14 +19,8 @@
   <input type="text" ng-model="vm.hello">
 
   <h3>List of fruits</h3>
-  <p>Search by value:</p>
-  <input ng-model="vm.search">
-  <ul>
-    <li ng-repeat="post in vm.posts | filter: vm.search">
-      title: {{post.title}} <br>
-      body: {{post.body}}
-    </li>
-  </ul>
+
+  <posts-list></posts-list>
   <button class="btn btn-primary" ng-click="vm.alertMe()" name="button">Alert me</button>
 
 
@@ -36,6 +30,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
   <script src="app.js" charset="utf-8"></script>
+  <script src="posts-list/posts-list.component.js" charset="utf-8"></script>
 
 </body>
 

@@ -1,0 +1,9 @@
+<p>Search by value:</p>
+<input ng-model="vm.search">
+
+<ul>
+  <li ng-repeat="post in vm.posts | filter: vm.search">
+    title: {{post.title}} <br>
+    body: {{post.body}}
+  </li>
+</ul>

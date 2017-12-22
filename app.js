@@ -1,17 +1,12 @@
 var app = angular.module('firstAngularApp', []);
 
-app.controller('mainCtrl', function(mainSvc) {
+app.controller('mainCtrl', function() {
   var vm = this;
   this.hello = "world";
   this.fruits = ['apple', 'orange', 'grape'];
   this.alertMe = function() {
     alert('Button pressed');
   };
-
-  mainSvc.getPosts()
-    .then(function(response) {
-      vm.posts = response.data;
-    })
 });
 
 app.filter('makePlural', function() {
