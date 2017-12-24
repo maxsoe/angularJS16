@@ -9,14 +9,36 @@ app.config(function($stateProvider, $urlRouterProvider) {
     templateUrl: 'home.html'
   };
 
+  // var postsState = {
+  //   name: 'posts',
+  //   url: '/posts',
+  //   template: '<posts-list></posts-list>'
+  // };
+
   var postsState = {
     name: 'posts',
     url: '/posts',
-    template: '<posts-list></posts-list>'
+    template: '<ui-view></ui-view>'
+  };
+
+  var postsIncompleteState = {
+    name: 'posts.imcomplete',
+    url: '/incomplete',
+    template: '<posts-list posts="vm.imcompletePosts"></posts-list>',
+    controllerAs: 'vm'
+  };
+
+  var postsCompleteState = {
+    name: 'posts.complete',
+    url: '/complete',
+    template: '<posts-list posts="vm.completePosts"></posts-list>',
+    controllerAs: 'vm'
   };
 
   $stateProvider.state(homeState);
   $stateProvider.state(postsState);
+  $stateProvider.state(postsIncompleteState);
+  $stateProvider.state(postsCompleteState);
 
   // $stateProvider
   //   .state('home', {
