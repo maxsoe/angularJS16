@@ -9,12 +9,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
     templateUrl: 'home.html'
   };
 
-  // var postsState = {
-  //   name: 'posts',
-  //   url: '/posts',
-  //   template: '<posts-list></posts-list>'
-  // };
-
   var postsState = {
     name: 'posts',
     url: '/posts',
@@ -22,9 +16,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
   };
 
   var postsIncompleteState = {
-    name: 'posts.imcomplete',
+    name: 'posts.incomplete',
     url: '/incomplete',
-    template: '<posts-list posts="vm.imcompletePosts"></posts-list>',
+    template: '<posts-list posts="vm.incompletePosts"></posts-list>',
     controllerAs: 'vm'
   };
 
@@ -51,13 +45,17 @@ app.config(function($stateProvider, $urlRouterProvider) {
   //   });
 });
 
-app.controller('mainCtrl', function() {
+app.controller('mainCtrl', function(mainSvc) {
   var vm = this;
-  this.hello = "world";
-  this.fruits = ['apple', 'orange', 'grape'];
-  this.alertMe = function() {
+  vm.hello = "world";
+  vm.alertMe = function() {
     alert('Button pressed');
   };
+  this.fruits = ['apple', 'orange', 'grape'];
+  mainSvc.getPosts().then(response => {
+    this.incompletePosts = response.data.splice(0, 50);
+    this.completePosts = response.data;
+  });
 });
 
 app.filter('makePlural', function() {
@@ -68,17 +66,17 @@ app.filter('makePlural', function() {
 
 // using factory
 app.factory('mainSvc', function($http) {
-  var getPosts = function() {
-    return $http.get('https://jsonplaceholder.typicode.com/posts');
-  };
-  return {
-    getPosts: getPosts
-  };
+      var getPosts = function() {
+        return $http.get('https://jsonplaceholder.typicode.com/posts');
+      };
+      return {
+        getPosts: getPosts
+      };
 });
 
-// using service
-// app.service('mainSvc', function($http) {
-//   this.getPosts = function() {
-//     return $http.get('https://jsonplaceholder.typicode.com/posts');
-//   };
-// });
+    // using service
+    // app.service('mainSvc', function($http) {
+    //   this.getPosts = function() {
+    //     return $http.get('https://jsonplaceholder.typicode.com/posts');
+    //   };
+    // });
