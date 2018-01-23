@@ -6,4 +6,31 @@
   <input type="text" ng-model="vm.hello">
 </div>
 
+<div class="chapter-03">
+  <h2>Chapter 3 - List of fruits</h2>
+  <ul>
+    <li ng-repeat="fruit in vm.fruits">{{fruit}}</li>
+  </ul>
+</div>
+
+<div class="chapter-04">
+  <h2>Chapter 4 - Search filter and custom filters</h2>
+  <p>Search by value:</p>
+  <input type="text" ng-model="vm.search">
+  <ul>
+    <li ng-repeat="fruit in vm.fruits | filter: vm.search">{{fruit | makePlural}}</li>
+  </ul>
+</div>
+
+<div class="chapter-05">
+<h2>Chapter 5 - $http</h2>
+<ul>
+  <li ng-repeat="post in vm.posts">
+    id: {{post.id}} <br>
+    title: {{post.title}} <br>
+    body: {{post.body}}
+  </li>
+</ul>
+</div>
+
 <button class="btn btn-primary" ng-click="vm.alertMe()" name="button">Alert me</button>
