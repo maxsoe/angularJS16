@@ -52,7 +52,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     })
     .state('posts', {
       url: '/posts',
-      template: '<ui-view></ui-view>'
+      template: '<ui-view><posts-list></posts-list></ui-view>'
     })
     .state('posts.incomplete', {
       url: '/incomplete',

@@ -1,3 +1,12 @@
+app.component('postsList', {
+  templateUrl: 'posts-list/posts-list.html',
+  controller: PostsListController,
+  controllerAs: 'vm', //defaults as $ctrl
+  bindings: {
+    posts: '<' // < denotes one-way binding, = denotes two-way, and & denotes a function
+  }
+});
+
 function PostsListController(mainSvc) {
   var vm = this;
 
@@ -7,12 +16,3 @@ function PostsListController(mainSvc) {
   //     vm.posts = response.data;
   //   })
 };
-
- app.component('postsList', {
-  templateUrl: 'posts-list/posts-list.html',
-  controller: PostsListController,
-  controllerAs: 'vm', //defaults as $ctrl
-  bindings: {
-    posts: '<' // < denotes one-way binding, = denotes two-way, and & denotes a function
-  }
-});
