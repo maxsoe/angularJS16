@@ -7,7 +7,7 @@ app.component('postsList', {
   }
 });
 
-function PostsListController(mainSvc) {
+function PostsListController() {
   var vm = this;
 
 // don't need this with nested views

@@ -18,15 +18,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
   var postsIncompleteState = {
     name: 'posts.incomplete',
     url: '/incomplete',
-    template: '<posts-list posts="vm.incompletePosts"></posts-list>',
-    controllerAs: 'vm'
+    template: '<posts-list posts="vm.incompletePosts"></posts-list>'
   };
 
   var postsCompleteState = {
     name: 'posts.complete',
     url: '/complete',
-    template: '<posts-list posts="vm.completePosts"></posts-list>',
-    controllerAs: 'vm'
+    template: '<posts-list posts="vm.completePosts"></posts-list>'
   };
   //
   $stateProvider
@@ -34,7 +32,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
   .state(postsState)
   .state(postsIncompleteState)
   .state(postsCompleteState);
-
 
   // $stateProvider
   //   .state('home', {
@@ -55,9 +52,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
   //     template: '<posts-list posts="vm.completePosts"></posts-list>',
   //     controllerAs: 'vm'
   //   })
-
-
-
 });
 
 app.controller('mainCtrl', function(mainSvc) {
