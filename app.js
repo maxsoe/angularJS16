@@ -3,36 +3,37 @@ var app = angular.module('firstAngularApp', ['ui.router']);
 app.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/');
 
-  // var homeState = {
-  //   name: 'home',
-  //   url: '/',
-  //   templateUrl: 'home.html'
-  // };
+  var homeState = {
+    name: 'home',
+    url: '/',
+    templateUrl: 'home.html'
+  };
+
+  var postsState = {
+    name: 'posts',
+    url: '/posts',
+    template: '<ui-view><posts-list></posts-list></ui-view>'
+  };
+
+  var postsIncompleteState = {
+    name: 'posts.incomplete',
+    url: '/incomplete',
+    template: '<posts-list posts="vm.incompletePosts"></posts-list>',
+    controllerAs: 'vm'
+  };
+
+  var postsCompleteState = {
+    name: 'posts.complete',
+    url: '/complete',
+    template: '<posts-list posts="vm.completePosts"></posts-list>',
+    controllerAs: 'vm'
+  };
   //
-  // var postsState = {
-  //   name: 'posts',
-  //   url: '/posts',
-  //   template: '<ui-view></ui-view>'
-  // };
-  //
-  // var postsIncompleteState = {
-  //   name: 'posts.incomplete',
-  //   url: '/incomplete',
-  //   template: '<posts-list posts="vm.incompletePosts"></posts-list>',
-  //   controllerAs: 'vm'
-  // };
-  //
-  // var postsCompleteState = {
-  //   name: 'posts.complete',
-  //   url: '/complete',
-  //   template: '<posts-list posts="vm.completePosts"></posts-list>',
-  //   controllerAs: 'vm'
-  // };
-  //
-  // $stateProvider.state(homeState);
-  // $stateProvider.state(postsState);
-  // $stateProvider.state(postsIncompleteState);
-  // $stateProvider.state(postsCompleteState);
+  $stateProvider
+  .state(homeState)
+  .state(postsState)
+  .state(postsIncompleteState)
+  .state(postsCompleteState);
 
 
   // $stateProvider
@@ -42,28 +43,21 @@ app.config(function($stateProvider, $urlRouterProvider) {
   //   })
   //   .state('posts', {
   //     url: '/posts',
-  //     template: '<posts-list></posts-list>'
-  //   });
+  //     template: '<ui-view><posts-list></posts-list></ui-view>'
+  //   })
+  //   .state('posts.incomplete', {
+  //     url: '/incomplete',
+  //     template: '<posts-list posts="vm.incompletePosts"></posts-list>',
+  //     controllerAs: 'vm'
+  //   })
+  //   .state('posts.complete', {
+  //     url: '/complete',
+  //     template: '<posts-list posts="vm.completePosts"></posts-list>',
+  //     controllerAs: 'vm'
+  //   })
 
-  $stateProvider
-    .state('home', {
-      url: '/',
-      templateUrl: 'home.html'
-    })
-    .state('posts', {
-      url: '/posts',
-      template: '<ui-view><posts-list></posts-list></ui-view>'
-    })
-    .state('posts.incomplete', {
-      url: '/incomplete',
-      template: '<posts-list posts="vm.incompletePosts"></posts-list>',
-      controllerAs: 'vm'
-    })
-    .state('posts.complete', {
-      url: '/complete',
-      template: '<posts-list posts="vm.completePosts"></posts-list>',
-      controllerAs: 'vm'
-    })
+
+
 });
 
 app.controller('mainCtrl', function(mainSvc) {
